@@ -17,7 +17,8 @@ const Home = () => {
   },[])
   return(
     <div>
-      <p>Hello from the home page</p>
+      <h1>Home Page</h1>
+      {post.map(posts => <p>{posts.title}</p>)}
     </div>
   )
 };
