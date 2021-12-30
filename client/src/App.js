@@ -1,6 +1,7 @@
-import React,{useState} from 'react';
+import React from 'react';
 import {Route, Routes} from 'react-router-dom';
 import Home from './components/Home';
+import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
 import User from './components/User';
@@ -12,6 +13,7 @@ import './App.css';
 const App = () => {
   return (
     <div>
+      <Navbar/>
       <Routes>
         <Route exact path ='/' element={<Home/>}/>
         <Route exact path ='/signup' element={<Signup/>}/>

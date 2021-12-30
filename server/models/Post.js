@@ -10,9 +10,6 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  photo:{
-    type: String
-  },
   comments:[{
     text: String,
     postedBy:{type: ObjectId, ref: 'User'}
@@ -22,6 +19,14 @@ const PostSchema = new mongoose.Schema({
     ref: 'User'
   }
 }, {timestamps: true});
+
+PostSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
+  }
+})
 
 const Post = mongoose.model('Post', PostSchema);
 
