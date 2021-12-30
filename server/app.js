@@ -15,11 +15,14 @@ mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology
     console.log('error connecting to MongoDB:')
   });
 
-// middleware
-app.use(cors());
+// Middleware;
+app.use(cors({
+  origin: 'http://localhost:3000', // <-- location of the react app we are connecting to
+  credentials: true
+}))
 app.use(express.json());
 
-// Connecting to routes
+// connect to routes
 app.use('/', authRouter);
 app.use('/blog', blogsRouter);
 

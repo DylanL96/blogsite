@@ -16,3 +16,15 @@ Content-Type: application/json
   "email": "dlaw96@hotmail.com",
   "password": "Doors343727"
 }
+
+###
+POST http://localhost:3001/blog/create
+Content-Type: application/json
+
+{
+  "title": "Fifth Post",
+  "body": "a"
+}
+
+###
+GET http://localhost:3001/blog/posts/61ccc13b2ee3ae026f14daaf

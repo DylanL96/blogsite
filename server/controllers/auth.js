@@ -6,13 +6,13 @@ const {JWT_SECRET} = require('../utils/config');
 
 
 
-const defaultViewController = (require, response) => {
+const defaultViewController = (request, response) => {
   response.send('Front Page')
 }
 
-const signupController = (require, response) => {
+const signupController = (request, response) => {
   // destructure the require.body
-  const {username, email, password} = require.body;
+  const {username, email, password} = request.body;
 
   // console.log(`username: ${username} email: ${email} password: ${password}`)
 
