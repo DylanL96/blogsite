@@ -28,4 +28,12 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6I
 }
 
 ###
+PUT http://localhost:3001/blog/posts/61cf19186374e3e776790f22
+Content-Type: application/json
+
+{
+  "title": "CHange is good",
+  "body": "WOOT!"
+}
+###
 GET http://localhost:3001/blog/posts/61ccc13b2ee3ae026f14daaf

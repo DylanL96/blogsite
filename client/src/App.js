@@ -10,6 +10,7 @@ import UserRoute from './components/UserRoute';
 import AdminRoute from './components/AdminRoute';
 import CreatePost from './components/CreatePost';
 import PostDetail from './components/PostDetail';
+import EditPost from './components/EditPost';
 import './App.css';
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
         <Route element={<AdminRoute/>}>
           <Route exact path='/admin' element={<Admin/>}/>
           <Route exact path='/admin/create' element={<CreatePost/>}/>
+          <Route exact path ='/posts/edit/:id' element={<EditPost/>}/>
         </Route>
       </Routes>
     </div>

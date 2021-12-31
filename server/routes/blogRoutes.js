@@ -14,4 +14,7 @@ router.post('/create', blogController.postContent);
 // DELETE request to delete a specific blog post
 router.delete('/posts/:id', blogController.deleteSpecificPost);
 
+// PUT request to update a specific blog post
+router.put('/posts/:id', blogController.updateSpecificPost);
+
 module.exports = router;

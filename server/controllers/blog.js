@@ -57,11 +57,28 @@ const deleteSpecificPost = async (request, response) => {
   }catch(exception){
     console.log(exception)
   }
+};
+
+const updateSpecificPost = async (request, response, next) => {
+  const body = request.body;
+  console.log(body)
+  const blog = {
+    title: body.title,
+    author: body.author
+  }
+  try{
+    const updatedBlog = Post.findByIdAndUpdate(request.params.id, blog);
+    return updatedBlog;
+
+  }catch(exception){
+    next(exception)
+  }
 }
 
 module.exports = {
   getPostContent,
   postContent,
   specificPostContent,
-  deleteSpecificPost
+  deleteSpecificPost,
+  updateSpecificPost
 }

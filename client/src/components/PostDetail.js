@@ -32,10 +32,15 @@ const PostDetail = () => {
       .catch(error => {
         console.log(error)
       })
+  };
+
+  const editHandler = id => {
+    navigate(`/posts/edit/${id}`)
   }
   return (
     <div>
       {isAuthenticated() && isAuthenticated().role === 1 ? <button onClick={()=>deleteHandler(post.id)} >Delete</button> : null}
+      {isAuthenticated() && isAuthenticated().role === 1 ? <button onClick={()=>editHandler(post.id)} >Edit</button> : null}
     </div>
   )
 };
