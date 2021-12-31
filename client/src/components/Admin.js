@@ -1,7 +1,9 @@
+import React from 'react';
+
 const Admin = () => {
   return(
     <div>
-      Welcome to the Admin page
+      <p>Welcome to Admin Page</p>
     </div>
   )
 };

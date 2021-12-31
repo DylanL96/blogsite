@@ -1,15 +1,5 @@
 const Post = require('../models/Post');
 const User = require('../models/User');
-const jwt = require('jsonwebtoken');
-const {JWT_SECRET} = require('../utils/config');
-
-const getTokenFrom = request => {
-  const authorization = request.get('authorization')
-  if(authorization && authorization.toLowerCase().startsWith('bearer ')){
-    return authorization.substr(7)
-  }
-  return null
-}
 
 // Get all of the post content
 const getPostContent = async(request, response) => {
@@ -24,27 +14,22 @@ const getPostContent = async(request, response) => {
 
 // create post data and submit into mongoDB with a POST request
 const postContent = async(request, response) => {
-  const {title, body, description} = request.body;
-  const token = getTokenFrom(request);
-  const decodedToken = jwt.verify(token, JWT_SECRET);
-  // console.log(decodedToken.user._id);
+  const {title, body} = request.body;
 
   if(!title || !body){
     return response.status(422).json('Please add all of the required fields')
   }
-  const user = await User.findById(decodedToken.user._id);
-
-  // creates the post based on the Post schema
-  const post = new Post({
-    title: title,
-    description: description,
-    body: body,
-    postedBy: user._id
-  });
   try{
+    const user = await User.findOne({});
+    // creates the post based on the Post schema
+    const post = new Post({
+      title: title,
+      body: body,
+      postedBy: user._id
+    });
     const savedPost = await post.save();
-    response.json(savedPost);
-    // response.json({post: savedPost})
+    response.json(savedPost)
+
   }catch(exception){
     console.log(exception)
   }
@@ -63,10 +48,20 @@ const specificPostContent = async (request, response) => {
   }catch(exception){
     console.log(exception)
   }
+};
+
+// delete specific post
+const deleteSpecificPost = async (request, response) => {
+  try{
+    await Post.findByIdAndDelete(request.params.id);
+  }catch(exception){
+    console.log(exception)
+  }
 }
 
 module.exports = {
   getPostContent,
   postContent,
-  specificPostContent
+  specificPostContent,
+  deleteSpecificPost
 }

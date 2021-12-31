@@ -8,6 +8,8 @@ import User from './components/User';
 import Admin from './components/Admin';
 import UserRoute from './components/UserRoute';
 import AdminRoute from './components/AdminRoute';
+import CreatePost from './components/CreatePost';
+import PostDetail from './components/PostDetail';
 import './App.css';
 
 const App = () => {
@@ -18,11 +20,13 @@ const App = () => {
         <Route exact path ='/' element={<Home/>}/>
         <Route exact path ='/signup' element={<Signup/>}/>
         <Route exact path ='/signin' element={<Signin/>}/>
+        <Route exact path ='/posts/:id' element={<PostDetail/>}/>
         <Route element={<UserRoute/>}>
           <Route exact path='/user' element={<User/>}/>
         </Route>
         <Route element={<AdminRoute/>}>
           <Route exact path='/admin' element={<Admin/>}/>
+          <Route exact path='/admin/create' element={<CreatePost/>}/>
         </Route>
       </Routes>
     </div>

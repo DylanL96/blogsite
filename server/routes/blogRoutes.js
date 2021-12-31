@@ -11,4 +11,7 @@ router.get('/posts/:id', blogController.specificPostContent)
 // POST request to create a new blog post
 router.post('/create', blogController.postContent);
 
+// DELETE request to delete a specific blog post
+router.delete('/posts/:id', blogController.deleteSpecificPost);
+
 module.exports = router;

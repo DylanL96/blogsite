@@ -10,6 +10,10 @@ const Navbar = () => {
     logout(() =>{
       navigate('/signin')
     })
+  };
+
+  const handleHome = event => {
+    navigate('/')
   }
   return(
     <div>
@@ -18,11 +22,19 @@ const Navbar = () => {
         <Link to="/signin">Sign-In</Link>
         <Link to="/">Home</Link>
         </React.Fragment>}
-      {isAuthenticated() && isAuthenticated().role === 1 && <p>Welcome {username.username}</p>}
-      {isAuthenticated() && isAuthenticated().role === 0 && <p>Welcome {username.username}</p>}
-      {isAuthenticated() && (
-        <button onClick={handleLogout}>Logout</button>
+        {isAuthenticated() && 
+        (<React.Fragment>
+          <button onClick={handleLogout}>Logout</button>
+          <button onClick={handleHome}>Home</button>
+          {/* <Link to="/">Home</Link> */}
+        </React.Fragment>
+        
       )}
+      {isAuthenticated() && isAuthenticated().role === 1 && 
+      <p>Welcome {username.username} 
+      <Link to="/admin">Admin Page</Link> 
+      <Link to="/admin/create">Create A Post</Link></p>}
+      {isAuthenticated() && isAuthenticated().role === 0 && <p>Welcome {username.username} <Link to="/user">User Page</Link></p>}
     </div>
   )
 };
