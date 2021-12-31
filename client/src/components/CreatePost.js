@@ -47,11 +47,19 @@ const CreatePost = () => {
   }
 
   const createPostForm = () => (
+    <div className="signup-form">
     <form onSubmit={handleSubmit}>
-      <input name='title' placeholder='enter title' value={title} onChange={handleChange}></input>
-      <input name='body' placeholder='enter body' value={body} onChange={handleChange}></input>
-      <button>Submit</button>
+      <div className="form-group">
+        <label htmlFor="exampleInputEmail1">Enter Title</label>
+        <input name="title" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter title" onChange={handleChange}/>
+      </div>
+      <div className="form-group">
+        <label htmlFor="exampleInputPassword1">Enter text body</label>
+        <textarea name="body" type="body" className="form-control" id="text-area"onChange={handleChange}></textarea>
+      </div>
+      <button type="submit" className="btn btn-primary">Submit</button>
     </form>
+    </div>
   )
   return(
     <div>
@@ -61,3 +69,4 @@ const CreatePost = () => {
 };
 
 export default CreatePost;
+

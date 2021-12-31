@@ -71,83 +71,35 @@ const Signup = () => {
 
 
   const showSignupForm = () => (
-    <form className='signup-form' onSubmit={handleSubmit}>
-        {/* username */}
-        <div className='form-group input-group'>
-            <div className='input-group-prepend'>
-                <span className='input-group-text'>
-                    <i className='fa fa-user'></i>
-                </span>
-            </div>
-            <input 
-                name='username'
-                value={username}
-                className='form-control'
-                placeholder='Username'
-                type='text'
-                onChange={handleChange}
-            />
+    <div className="signup-form">
+      <form onSubmit={handleSubmit}>
+        <div>
+        <h2>Register</h2>
+          <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+          <label htmlFor="exampleInputUsername">Username</label>
+          <input name="username" value={username} type="username" className="form-control" aria-describedby="emailHelp" placeholder="Enter Username" onChange={handleChange}/>
+          <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
-        {/* email */}
-        <div className='form-group input-group'>
-            <div className='input-group-prepend'>
-                <span className='input-group-text'>
-                    <i className='fa fa-envelope'></i>
-                </span>
-            </div>
-            <input
-                name='email'
-                value={email}
-                className='form-control'
-                placeholder='Email address'
-                type='email'
-                onChange={handleChange}
-            />
+        <div className="form-group">
+          <label htmlFor="exampleInputEmail">Email</label>
+          <input name="email" value={email} type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter Username" onChange={handleChange}/>
+          <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
-        {/* password */}
-        <div className='form-group input-group'>
-            <div className='input-group-prepend'>
-                <span className='input-group-text'>
-                    <i className='fa fa-lock'></i>
-                </span>
-            </div>
-            <input 
-                name='password'
-                value={password}
-                className='form-control'
-                placeholder='Create password'
-                type='password'
-                onChange={handleChange}
-            />
+        <div className="form-group">
+          <label htmlFor="exampleInputPassword1">Password</label>
+          <input name="password" type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" onChange={handleChange}/>
         </div>
-        {/* password2 */}
-        <div className='form-group input-group'>
-            <div className='input-group-prepend'>
-                <span className='input-group-text'>
-                    <i className='fa fa-lock'></i>
-                </span>
-            </div>
-            <input 
-                name='password2'
-                value={password2}
-                className='form-control'
-                placeholder='Confirm password'
-                type='password'
-                onChange={handleChange}
-            />
+        <div className="form-group">
+          <label htmlFor="exampleInputPassword2">Password2</label>
+          <input name="password2" type="password" className="form-control" id="exampleInputPassword2" placeholder="Password" onChange={handleChange}/>
         </div>
-        {/* signup button */}
-        <div className='form-group'>
-            <button type='submit' className='btn btn-primary btn-block'>
-                Signup
-            </button>
-        </div>
-        {/* already have account */}
-    </form>
+        <button type="submit" className="btn btn-primary">Submit</button>
+      </form>
+    </div>
 );
 
   return(
-    <div>Welcome to Signup Page
+    <div>
       {/* if errorMsg is true, then execute showErrorMessage */}
       {errorMsg && showErrorMessage(errorMsg)}
       {successMsg && showSuccessMessage(successMsg)}

@@ -78,18 +78,25 @@ const Signin = () => {
     
   }
 
-
-
   const showSigninForm = () => (
-    <form onSubmit={handleSubmit}>
-      <input name="email" placeholder="enter your email" type="text" onChange={handleChange}/>
-      <input name="password" placeholder="enter your password" onChange={handleChange}/>
-      <button type="submit">Submit</button>
-    </form>
+    <div className="signup-form">
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+        <h2>Log in</h2>
+          <label htmlFor="exampleInputEmail1">Email address</label>
+          <input name="email"  type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" onChange={handleChange}/>
+          <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div className="form-group">
+          <label htmlFor="exampleInputPassword1">Password</label>
+          <input name="password" type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" onChange={handleChange}/>
+        </div>
+        <button type="submit" className="btn btn-primary">Submit</button>
+      </form>
+    </div>
   )
   return (
     <div>
-      <p>Sign in page</p>
       {loading && showLoading()}
       {errorMessage && showErrorMessage()}
       {showSigninForm()}
@@ -98,3 +105,4 @@ const Signin = () => {
 };
 
 export default Signin;
+

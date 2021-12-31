@@ -39,7 +39,8 @@ const postContent = async(request, response) => {
 const specificPostContent = async (request, response) => {
   // console.log(require.params.id);
   try{
-    const specificPost = await Post.findById(request.params.id);
+    const specificPost = await Post.findById(request.params.id)
+    .populate('postedBy', {username:1})
     if(specificPost){
       response.json(specificPost);
     }else {
@@ -64,7 +65,7 @@ const updateSpecificPost = async (request, response, next) => {
   console.log(body)
   const blog = {
     title: body.title,
-    author: body.author
+    body: body.body
   }
   try{
     const updatedBlog = Post.findByIdAndUpdate(request.params.id, blog);
