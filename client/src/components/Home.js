@@ -19,32 +19,17 @@ const Home = () => {
   return(
     <div>
       {posts.map(post => 
-        <div className="card text-center" key={post.id}>
-          <div className="card-header">
-            Featured
-          </div>
-        <div className="card-body" key={post.id}>
-      <h5 className="card-title">{post.title}</h5>
-          <p className="card-text"></p>
-          <a href={`/posts/${post.id}`} className="btn btn-primary">Read more</a>
+        <div className="card mb-3" key={post.id}>
+          <div className="card-body">
+        <h5 className="card-title">{post.title}</h5>
+        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+        <Link className="btn btn-primary" to={`/posts/${post.id}`}>Click to read more</Link>
         </div>
-        <div className="card-footer">
-          Posted: {post.createdAt}
         </div>
-      </div>
       )}
     </div>
   )
 };
 
 export default Home;
-
-// {posts.map(post => 
-//   <div key={post.id} classNameName="card">
-//   <div classNameName="card-body">
-//     <h5 classNameName="card-title">{post.title} Written by: {post.postedBy.username.charAt(0).toUpperCase()+post.postedBy.username.slice(1)}</h5>
-//     <p classNameName="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-//     <Link to={`/posts/${post.id}`}>Click to read more</Link>
-//   </div>
-// </div>
-// )}

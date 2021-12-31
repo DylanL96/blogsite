@@ -1,20 +1,29 @@
 import React, {useState} from 'react';
 import isEmpty from 'validator/lib/isEmpty';
 import {postDataForm} from '../api/post';
+import {useNavigate} from 'react-router-dom';
+import {showErrorMessage, showSuccessMessage} from '../helpers/messages';
 
 
 const CreatePost = () => {
   const [postData, setPostData] = useState({
     title: 'Test title 1',
     body: 'Test Body 1',
-  });
+    successMessage: false,
+    errorMessage: false,
+    loading: false
 
-  const {title, body} = postData;
+  });
+  let navigate = useNavigate();
+
+  const {title, body, successMessage, error, loading} = postData;
 
   const handleChange = event => {
     setPostData({
       ...postData,
-      [event.target.name] : event.target.value
+      [event.target.name] : event.target.value,
+      successMessage: '',
+      errorMessage: ''
     })
   };
 
@@ -28,19 +37,22 @@ const CreatePost = () => {
     } else {
       const {title, body} = postData;
       const data = {title, body};
-      setPostData({...postData});
+      setPostData({...postData, loading: true});
       // console.log(`Submitted post data: `, postData)
 
       postDataForm(data)
         .then(response => {
           setPostData({
             title: '',
-            body: ''
+            body: '',
+            loading: false,
+            successMessage: response.data.successMessage
           })
+          navigate('/')
         })
         .catch(error => {
           console.log(error.response.data)
-          setPostData({...postData})
+          setPostData({...postData, loading: false})
         })
     }
     
