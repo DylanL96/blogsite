@@ -36,4 +36,14 @@ Content-Type: application/json
   "body": "WOOT!"
 }
 ###
+
+PUT http://localhost:3001/blog/comment
+Content-Type: application/json
+
+{
+  "comment": "CHange is good",
+}
+
+
+###
 GET http://localhost:3001/blog/posts/61ccc13b2ee3ae026f14daaf

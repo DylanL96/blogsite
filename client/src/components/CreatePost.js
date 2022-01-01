@@ -9,6 +9,7 @@ const CreatePost = () => {
   const [postData, setPostData] = useState({
     title: 'Test title 1',
     body: 'Test Body 1',
+    description: 'Test description 1',
     successMessage: false,
     errorMessage: false,
     loading: false
@@ -16,7 +17,7 @@ const CreatePost = () => {
   });
   let navigate = useNavigate();
 
-  const {title, body, successMessage, error, loading} = postData;
+  const {title, body, description, successMessage, error, loading} = postData;
 
   const handleChange = event => {
     setPostData({
@@ -30,13 +31,13 @@ const CreatePost = () => {
   const handleSubmit = event => {
     event.preventDefault();
     console.log('Submitted post!');
-    if(isEmpty(title) || isEmpty(body)){
+    if(isEmpty(title) || isEmpty(body) || isEmpty(description)){
       setPostData({
         ...postData
       })
     } else {
-      const {title, body} = postData;
-      const data = {title, body};
+      const {title, body, description} = postData;
+      const data = {title, body, description};
       setPostData({...postData, loading: true});
       // console.log(`Submitted post data: `, postData)
 
@@ -45,6 +46,7 @@ const CreatePost = () => {
           setPostData({
             title: '',
             body: '',
+            description: '',
             loading: false,
             successMessage: response.data.successMessage
           })
@@ -64,6 +66,10 @@ const CreatePost = () => {
       <div className="form-group">
         <label htmlFor="exampleInputEmail1">Enter Title</label>
         <input name="title" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter title" onChange={handleChange}/>
+      </div>
+      <div className="form-group">
+        <label htmlFor="exampleInputDescription">Enter Description</label>
+        <input name="description" className="form-control" id="exampleInputDescription" aria-describedby="descriptionHelp" placeholder="Enter Description" onChange={handleChange}/>
       </div>
       <div className="form-group">
         <label htmlFor="exampleInputPassword1">Enter text body</label>

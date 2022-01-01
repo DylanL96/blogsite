@@ -10,10 +10,10 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  comments:[{
-    text: String,
-    postedBy:{type: ObjectId, ref: 'User'}
-  }],
+  description:{
+    type: String,
+    required: true
+  },
   postedBy:{
     type: ObjectId,
     ref: 'User'

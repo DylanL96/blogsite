@@ -14,7 +14,7 @@ const getPostContent = async(request, response) => {
 
 // create post data and submit into mongoDB with a POST request
 const postContent = async(request, response) => {
-  const {title, body} = request.body;
+  const {title, description, body} = request.body;
 
   if(!title || !body){
     return response.status(422).json('Please add all of the required fields')
@@ -24,6 +24,7 @@ const postContent = async(request, response) => {
     // creates the post based on the Post schema
     const post = new Post({
       title: title,
+      description: description,
       body: body,
       postedBy: user._id
     });
@@ -60,11 +61,12 @@ const deleteSpecificPost = async (request, response) => {
   }
 };
 
-const updateSpecificPost = async (request, response, next) => {
+const updateSpecificPost = async (request, response) => {
   const body = request.body;
-  console.log(body)
+  // console.log(body)
   const blog = {
     title: body.title,
+    description: body.description,
     body: body.body
   }
   try{
@@ -74,7 +76,7 @@ const updateSpecificPost = async (request, response, next) => {
   }catch(exception){
     next(exception)
   }
-}
+};
 
 module.exports = {
   getPostContent,

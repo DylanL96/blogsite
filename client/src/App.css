@@ -58,6 +58,7 @@ body {
   position: relative;
   text-align: center;
   }
+  
 .signup-form h2:before, .signup-form h2:after{
   content: "";
   height: 2px;
@@ -95,3 +96,10 @@ body {
   outline: none !important;
 }
 
+button{
+  margin: 2px;
+}
+
+.card-title{
+  text-decoration: underline;
+}

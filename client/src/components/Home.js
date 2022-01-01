@@ -9,27 +9,36 @@ const Home = () => {
         .get('http://localhost:3001/blog/posts')
         .then(response => {
           setPosts(response.data)
-          console.log(response.data)
+          // console.log(response.data)
         })
         .catch(error => {
           console.log(error)
         })
-    },[])
+    },[]);
+
+  const allPosts = () => (
+    <div>
+    {posts.map(post => 
+      <div className="card mb-3" key={post.id}>
+      <div className="card-body">
+        <h3 className="card-title">{post.title}</h3>
+        <p className="card-text">{post.description}</p>
+        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+        <a href={`/posts/${post.id}`} className="btn btn-primary">Read more</a>
+      </div>
+      </div>
+    )}
+  </div>
+  )
 
   return(
     <div>
-      {posts.map(post => 
-        <div className="card mb-3" key={post.id}>
-          <div className="card-body">
-        <h5 className="card-title">{post.title}</h5>
-        <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-        <Link className="btn btn-primary" to={`/posts/${post.id}`}>Click to read more</Link>
-        </div>
-        </div>
-      )}
+      {allPosts()}
     </div>
   )
 };
 
 export default Home;
+
+
+
