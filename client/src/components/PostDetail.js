@@ -4,18 +4,16 @@ import {useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 const PostDetail = () => {
-  const [post, setPost] = useState([]); 
-  const [delPost, setDelPost] = useState([]);
-  const [message, setMessage] = useState('');
   let navigate = useNavigate();
   let params = useParams();
-  // console.log(params.id)
+  const [post, setPost] = useState([]); 
+  const [delPost, setDelPost] = useState([]);
 
   //Get all of the posts
   useEffect(() => {
     axios.get(`http://localhost:3001/blog/posts/${params.id}`)
       .then(result => {
-        // console.log(result.data)
+        console.log(result.data)
         setPost(result.data)
       })
       .catch(error => {
@@ -27,7 +25,7 @@ const PostDetail = () => {
     navigate('/')
     axios.delete(`http://localhost:3001/blog/posts/${id}`)
       .then(result => {
-        setDelPost(delPost.filter(element => element._id !==id));
+        setDelPost(delPost.filter(element => element._id !==id))
       })
       .catch(error => {
         console.log(error)

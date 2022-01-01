@@ -6,18 +6,17 @@ import {showErrorMessage, showSuccessMessage} from '../helpers/messages';
 
 
 const CreatePost = () => {
+  let navigate = useNavigate();
   const [postData, setPostData] = useState({
-    title: 'Test title 1',
-    body: 'Test Body 1',
-    description: 'Test description 1',
+    title: '',
+    body: '',
+    description: '',
     successMessage: false,
     errorMessage: false,
     loading: false
-
   });
-  let navigate = useNavigate();
 
-  const {title, body, description, successMessage, error, loading} = postData;
+  const {title, body, description, successMessage, errorMessage} = postData;
 
   const handleChange = event => {
     setPostData({
@@ -33,7 +32,8 @@ const CreatePost = () => {
     console.log('Submitted post!');
     if(isEmpty(title) || isEmpty(body) || isEmpty(description)){
       setPostData({
-        ...postData
+        ...postData,
+        errorMessage: 'All fields are required'
       })
     } else {
       const {title, body, description} = postData;
@@ -43,21 +43,16 @@ const CreatePost = () => {
 
       postDataForm(data)
         .then(response => {
-          setPostData({
-            title: '',
-            body: '',
-            description: '',
-            loading: false,
-            successMessage: response.data.successMessage
+          setPostData({...postData,
+            successMessage: 'Successful post!'
           })
           navigate('/')
         })
         .catch(error => {
           console.log(error.response.data)
-          setPostData({...postData, loading: false})
+          setPostData({...postData, loading: false, errorMessage: error.response.data})
         })
     }
-    
   }
 
   const createPostForm = () => (
@@ -81,6 +76,8 @@ const CreatePost = () => {
   )
   return(
     <div>
+      <div>{successMessage && showSuccessMessage(successMessage)}</div>
+      <div>{errorMessage && showErrorMessage(errorMessage)}</div>
       <div>{createPostForm()}</div>
     </div>
   )

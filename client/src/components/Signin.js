@@ -73,6 +73,10 @@ const Signin = () => {
         })
         .catch(error => {
           console.log('error logging in')
+          setFormData({
+            ...formData,
+            errorMessage: 'Invalid email or password. Try again.'
+          })
         })
     }
     
@@ -98,7 +102,7 @@ const Signin = () => {
   return (
     <div>
       {loading && showLoading()}
-      {errorMessage && showErrorMessage()}
+      {errorMessage && showErrorMessage(errorMessage)}
       {showSigninForm()}
     </div>
   )
