@@ -2,11 +2,14 @@ import React, {useState} from 'react';
 import isEmpty from 'validator/lib/isEmpty';
 import isEmail from 'validator/lib/isEmail';
 import equals from 'validator/lib/equals';
+import {useNavigate} from 'react-router-dom';
 import {showErrorMessage, showSuccessMessage} from '../helpers/messages';
 import {showLoading} from '../helpers/loading';
-import {signup} from '../api/auth';
+import axios from 'axios';
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: 'johndoe',
     email: 'johndoe@hotmail.com',
@@ -45,26 +48,26 @@ const Signup = () => {
     } else {
       // success
       const {username, email, password} = formData;
-      const data = {username, email, password};
 
       // take whatever data we have already, but only changing the loading state from false to true
       setFormData({...formData, loading:true});
       //passing our data field as an argument to the signup
-      signup(data)
-        .then((response => {
+      axios.post('http://localhost:3001/signup', formData)
+        .then(response => {
           console.log(response)
-          setFormData({
+          navigate('/')
+            setFormData({
             username: '',
             email: '',
             password: '',
             password2: '',
             loading: false,
-            successMsg: response.data.successMessage
+            successMsg: response.data.successMessage,
           })
-        }))
+        })
         .catch(error => {
           console.log(error)
-          setFormData({...formData, loading: false})
+          setFormData({...formData, errorMsg: error.data.errorMsg})
         })
     }
   };
@@ -75,7 +78,7 @@ const Signup = () => {
       <form onSubmit={handleSubmit}>
         <div>
         <h2>Register</h2>
-          <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+          <p className="hint-text">Create your account. It's free and only takes a minute.</p>
           <label htmlFor="exampleInputUsername">Username</label>
           <input name="username" value={username} type="username" className="form-control" aria-describedby="emailHelp" placeholder="Enter Username" onChange={handleChange}/>
           <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>

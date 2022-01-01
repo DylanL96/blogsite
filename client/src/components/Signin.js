@@ -5,7 +5,7 @@ import isEmail from 'validator/lib/isEmail';
 import {showErrorMessage} from '../helpers/messages';
 import { showLoading } from '../helpers/loading';
 import {setAuthentication, isAuthenticated} from '../helpers/auth';
-import { signin } from '../api/auth';
+import axios from 'axios';
 
 const Signin = () => {
   let navigate = useNavigate();
@@ -60,27 +60,26 @@ const Signin = () => {
       console.log(`the sign in form data:`, data);
 
       // sending the destructured data object to the signin axios POST request
-      signin(data)
+      axios.post('http://localhost:3001/signin', formData)
         .then(response => {
-          setAuthentication(response.data.token, response.data.user)
-          // console.log(response.data)
+          setAuthentication(response.data.token, response.data.user);
           if(isAuthenticated() && isAuthenticated().role === 1){
             navigate('/admin')
           } else {
             console.log('Redirect to user dashboard')
             navigate('/user')
           }
+          console.log(response)
         })
         .catch(error => {
-          console.log('error logging in')
+          console.log(error)
           setFormData({
             ...formData,
             errorMessage: 'Invalid email or password. Try again.'
           })
         })
     }
-    
-  }
+  };
 
   const showSigninForm = () => (
     <div className="signup-form">

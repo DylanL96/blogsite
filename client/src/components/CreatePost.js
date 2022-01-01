@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import isEmpty from 'validator/lib/isEmpty';
-import {postDataForm} from '../api/post';
 import {useNavigate} from 'react-router-dom';
 import {showErrorMessage, showSuccessMessage} from '../helpers/messages';
-
+import axios from 'axios';
 
 const CreatePost = () => {
   let navigate = useNavigate();
@@ -39,18 +38,16 @@ const CreatePost = () => {
       const {title, body, description} = postData;
       const data = {title, body, description};
       setPostData({...postData, loading: true});
-      // console.log(`Submitted post data: `, postData)
+      console.log(`Submitted post data: `, postData)
 
-      postDataForm(data)
+      // submit the data to the server
+      axios.post('http://localhost:3001/blog/create', postData)
         .then(response => {
-          setPostData({...postData,
-            successMessage: 'Successful post!'
-          })
           navigate('/')
+          // console.log(response)
         })
         .catch(error => {
-          console.log(error.response.data)
-          setPostData({...postData, loading: false, errorMessage: error.response.data})
+          console.log(error)
         })
     }
   }

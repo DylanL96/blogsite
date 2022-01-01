@@ -12,7 +12,6 @@ code {
     monospace;
 }
 
-
 /*!
 * Start Bootstrap - Clean Blog v6.0.7 (https://startbootstrap.com/theme/clean-blog)
 * Copyright 2013-2021 Start Bootstrap
@@ -83,6 +82,7 @@ code {
 *::after {
   box-sizing: border-box;
 }
+
 
 
 @media (prefers-reduced-motion: no-preference) {
@@ -10970,47 +10970,7 @@ textarea.form-control-lg {
     font-size: 1.5rem !important;
   }
 }
-@media print {
-  .d-print-inline {
-    display: inline !important;
-  }
 
-  .d-print-inline-block {
-    display: inline-block !important;
-  }
-
-  .d-print-block {
-    display: block !important;
-  }
-
-  .d-print-grid {
-    display: grid !important;
-  }
-
-  .d-print-table {
-    display: table !important;
-  }
-
-  .d-print-table-row {
-    display: table-row !important;
-  }
-
-  .d-print-table-cell {
-    display: table-cell !important;
-  }
-
-  .d-print-flex {
-    display: flex !important;
-  }
-
-  .d-print-inline-flex {
-    display: inline-flex !important;
-  }
-
-  .d-print-none {
-    display: none !important;
-  }
-}
 body {
   font-size: 1.25rem;
 }

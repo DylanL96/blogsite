@@ -35,7 +35,7 @@ const Home = () => {
     <div className="row gx-4 gx-lg-5 justify-content-center">
         <div className="col-md-10 col-lg-8 col-xl-7">
             <div className="post-preview">
-                <a href="post.html">
+                <a href={`/posts/${post.id}`}>
                     <h2 className="post-title">{post.title}</h2>
                     <h3 className="post-subtitle">{post.description}</h3>
                 </a>
