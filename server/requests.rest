@@ -49,4 +49,7 @@ Content-Type: application/json
 GET http://localhost:3001/blog/posts/61ccc13b2ee3ae026f14daaf
 
 ###
-GET http://localhost:3001/admin
+GET http://localhost:3001/admin/61cc91eee350ed6810b0b83f
+
+###
+GET http://localhost:3001/blog/posts
