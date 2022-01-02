@@ -15,10 +15,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  posts:{
-    type: ObjectId,
-    ref: 'Post'
-  },
   role:{
     type: Number,
     default: 0,

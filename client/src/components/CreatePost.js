@@ -35,8 +35,8 @@ const CreatePost = () => {
         errorMessage: 'All fields are required'
       })
     } else {
-      const {title, body, description} = postData;
-      const data = {title, body, description};
+      // const {title, body, description} = postData;
+      // const data = {title, body, description};
       setPostData({...postData, loading: true});
       console.log(`Submitted post data: `, postData)
 
@@ -57,11 +57,11 @@ const CreatePost = () => {
     <form onSubmit={handleSubmit}>
       <div className="form-group">
         <label htmlFor="exampleInputEmail1">Enter Title</label>
-        <input name="title" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter title" onChange={handleChange}/>
+        <input name="title" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={handleChange}/>
       </div>
       <div className="form-group">
         <label htmlFor="exampleInputDescription">Enter Description</label>
-        <input name="description" className="form-control" id="exampleInputDescription" aria-describedby="descriptionHelp" placeholder="Enter Description" onChange={handleChange}/>
+        <input name="description" className="form-control" id="exampleInputDescription" aria-describedby="descriptionHelp" onChange={handleChange}/>
       </div>
       <div className="form-group">
         <label htmlFor="exampleInputPassword1">Enter text body</label>

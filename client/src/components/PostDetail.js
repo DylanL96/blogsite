@@ -59,7 +59,7 @@ const PostDetail = () => {
             />
           </figure>
           <section className="mb-5">
-            <p className="fs-5 mb-4">
+            <p className="post-description">
               {post.body}
             </p>
           </section>

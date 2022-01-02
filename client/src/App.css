@@ -150,6 +150,7 @@ h3 {
   font-weight: 100;
 }
 
+
 /* LAYOUT CSS */
 .pure-img-responsive {
   max-width: 100%;
@@ -171,17 +172,6 @@ h3 {
   color: #fff;
 }
 
-.brand-title,
-.brand-tagline {
-  margin: 0;
-}
-.brand-title {
-  text-transform: uppercase;
-}
-.brand-tagline {
-  font-weight: 300;
-  color: rgb(176, 202, 219);
-}
 
 .nav-list {
   margin: 0;
@@ -230,11 +220,7 @@ h3 {
   color: #222;
   margin-bottom: 0.2em;
 }
-.post-avatar {
-  border-radius: 50px;
-  float: right;
-  margin-left: 1em;
-}
+
 .post-description {
   font-family: Georgia, "Cambria", serif;
   color: #444;
@@ -246,17 +232,10 @@ h3 {
   margin: 0;
 }
 
-.footer {
-  padding: 1em 0;
+#button{
+  margin: 7px;
 }
-.footer a {
-  color: #ccc;
-  font-size: 80%;
-}
-.footer .pure-menu a:hover,
-.footer .pure-menu a:focus {
-  background: none;
-}
+
 
 @media (min-width: 48em) {
   .content {
@@ -279,4 +258,21 @@ h3 {
   .footer {
       text-align: center;
   }
+}
+
+th{
+  border: 1px solid black;
+  text-align: center;
+}
+
+table{
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td{
+  text-align: center;
+  border: 1px solid black;
+  border-collapse: collapse;
 }

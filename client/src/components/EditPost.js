@@ -57,7 +57,7 @@ const EditPost = () => {
       <div id="test" className="form-group">
       <h2>Edit Form</h2>
         <label htmlFor="exampleInputEmail1">Enter Title</label>
-        <input name="title" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter title" onChange={handleChange}/>
+        <input name="title" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={handleChange}/>
       </div>
       <div className="form-group">
         <label htmlFor="exampleInputDescription">Enter description body</label>

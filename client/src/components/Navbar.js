@@ -21,7 +21,7 @@ const Navbar = () => {
     {!isAuthenticated() && <a className="nav-link" href="/signin">Sign-in</a>}
     {!isAuthenticated() && <a className="nav-link" href="/signup">Sign-up</a>}
     <div className="topnav-right">
-    {isAuthenticated() && (<button className="nav-link" onClick={handleLogout}>Logout </button>)}
+    {isAuthenticated() && (<button id="button" className="btn btn-outline-light" onClick={handleLogout}>Logout </button>)}
     </div>
   </div>
   )

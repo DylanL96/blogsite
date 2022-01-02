@@ -5,6 +5,7 @@ const app = express();
 const mongoose = require('mongoose');
 const blogsRouter = require('./routes/blogRoutes');
 const authRouter = require('./routes/authRoutes');
+const adminRouter = require('./routes/adminRoutes');
 
 // connecting to database
 mongoose.connect(config.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -25,6 +26,7 @@ app.use(express.json());
 // connect to routes
 app.use('/', authRouter);
 app.use('/blog', blogsRouter);
+app.use('/admin', adminRouter);
 
 
 module.exports = app;

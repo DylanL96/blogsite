@@ -46,15 +46,12 @@ const Signup = () => {
         ...formData, errorMsg: 'Passwords do not match'
       })
     } else {
-      // success
-      const {username, email, password} = formData;
-
       // take whatever data we have already, but only changing the loading state from false to true
       setFormData({...formData, loading:true});
       //passing our data field as an argument to the signup
       axios.post('http://localhost:3001/signup', formData)
         .then(response => {
-          console.log(response)
+          // console.log(response)
           navigate('/')
             setFormData({
             username: '',

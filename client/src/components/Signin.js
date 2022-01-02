@@ -57,7 +57,7 @@ const Signin = () => {
 
       // setting the form data and creating a new iterable copy of the array using spread operator.
       setFormData({...formData, loading: true})
-      console.log(`the sign in form data:`, data);
+      // console.log(`the sign in form data:`, data);
 
       // sending the destructured data object to the signin axios POST request
       axios.post('http://localhost:3001/signin', formData)
@@ -69,7 +69,7 @@ const Signin = () => {
             console.log('Redirect to user dashboard')
             navigate('/user')
           }
-          console.log(response)
+          // console.log(response)
         })
         .catch(error => {
           console.log(error)
