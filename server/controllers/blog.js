@@ -4,7 +4,7 @@ const User = require('../models/User');
 // Get all of the post content
 const getPostContent = async(request, response) => {
   try{
-    const allPosts = await Post.find({})
+    const allPosts = await Post.find({}).sort({createdAt:-1})
     .populate('postedBy', {username:1})
     response.json(allPosts);
   } catch (exception){

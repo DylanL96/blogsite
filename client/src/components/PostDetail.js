@@ -44,7 +44,9 @@ const PostDetail = () => {
           <header className="mb-4">
           <h1 className="fw-bolder mb-1">{post.title}</h1>
             <div className="fst-italic mb-2">
-              Posted on {post.createdAt}
+            <div>
+            Date: {post.createdAt}
+            </div>
             </div>
               {isAuthenticated() && isAuthenticated().role === 1 ? <button className="btn btn-primary" onClick={()=>deleteHandler(post.id)} >Delete</button> : null}
               {isAuthenticated() && isAuthenticated().role === 1 ? <button className="btn btn-primary" onClick={()=>editHandler(post.id)} >Edit</button> : null}
